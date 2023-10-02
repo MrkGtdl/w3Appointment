@@ -26,16 +26,11 @@ class LoginRegisterController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            // 'fname' => 'required|string|max:250',
-            // 'lname' => 'required|string|max:250',
-            // 'email' => 'required|email|max:250|unique:users',
             'mobile_phone' => 'required|max:250|unique:users',
             'password' => 'required|min:8|confirmed'
         ]);
 
         User::create([
-            // 'name' => $request->name,
-            // 'email' => $request->email,
             'fname' => $request->fname,
             'lname' => $request->lname,
             'mobile_phone' => $request->mobile_phone,
