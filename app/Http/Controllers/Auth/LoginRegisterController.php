@@ -34,13 +34,15 @@ class LoginRegisterController extends Controller
             'fname' => $request->fname,
             'lname' => $request->lname,
             'mobile_phone' => $request->mobile_phone,
+            'gender' => $request->gender,
+            'birthday' => $request->birthday,
+            'type' => $request->type,
             'password' => Hash::make($request->password)
         ]);
 
         $credentials = $request->only('mobile_phone', 'password');
         Auth::attempt($credentials);
         $request->session()->regenerate();
-
         return redirect()->route('dashboard')
         ->withSuccess('You have successfully registered & logged in!');
     }
